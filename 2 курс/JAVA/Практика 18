@@ -1,1 +1,35 @@
+package Task1;
 
+public class DivisionByZeroComparison {
+    
+    // Метод с другим именем и другим выводом
+    public static void floatingPointDivisionTest() {
+        System.out.println("ДЕЛЕНИЕ DOUBLE:");
+        double x = 2.0;
+        double y = 0.0;
+        double z = x / y;
+        System.out.println(x + " / " + y + " = " + z);
+        System.out.println("Это корректно по IEEE 754\n");
+    }
+    
+    // Метод с другой структурой обработки ошибок
+    public static void integerDivisionTest() {
+        System.out.println("ДЕЛЕНИЕ INT:");
+        try {
+            int a = 2;
+            int b = 0;
+            int c = a / b;  // Эта строка вызовет исключение
+            System.out.println(a + " / " + b + " = " + c);
+        } 
+        catch (ArithmeticException error) {
+            System.out.println("Невозможно выполнить операцию!");
+            System.out.println("Причина: " + error.toString());
+        }
+        System.out.println("Деление на 0 запрещено для целых чисел");
+    }
+    
+    public static void main(String[] params) {
+        floatingPointDivisionTest();
+        integerDivisionTest();
+    }
+}
